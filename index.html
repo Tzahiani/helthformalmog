@@ -45,6 +45,20 @@
         .form-group textarea {
             resize: vertical;
         }
+        .form-group .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        .form-group .checkbox-group input {
+            margin-left: 10px;
+        }
+        .form-group .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .form-group .radio-group input {
+            margin-left: 10px;
+        }
         .submit-btn {
             width: 100%;
             padding: 10px;
@@ -58,10 +72,16 @@
         .submit-btn:hover {
             background-color: #218838;
         }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 200px;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
+        <img src="path_to_your_logo.png" alt="לוגו" class="logo">
         <h2>טופס הצהרת בריאות</h2>
         <form id="healthForm">
             <div class="form-group">
@@ -69,39 +89,71 @@
                 <input type="text" id="fullName" name="fullName" required>
             </div>
             <div class="form-group">
+                <label for="birthDate">תאריך לידה</label>
+                <input type="date" id="birthDate" name="birthDate" required>
+            </div>
+            <div class="form-group">
                 <label for="email">מייל</label>
                 <input type="email" id="email" name="email" required>
             </div>
-            <button type="submit" class="submit-btn">שלח</button>
-        </form>
-    </div>
-
-    <script>
-        document.getElementById('healthForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-                const response = await fetch('http://localhost:3000/send-email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-
-                if (response.ok) {
-                    alert('הטופס נשלח בהצלחה!');
-                } else {
-                    alert('שגיאה בשליחת הטופס');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('שגיאה בלתי צפויה');
-            }
-        });
-    </script>
-</body>
-</html>
+            <div class="form-group">
+                <label>מין</label>
+                <div class="radio-group">
+                    <input type="radio" id="male" name="gender" value="זכר" required>
+                    <label for="male">זכר</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="female" name="gender" value="נקבה" required>
+                    <label for="female">נקבה</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>האם ידוע לך על אחת או יותר מהרגישויות הכתובות מטה? במידה ואחת התשובות הינה כן, אנא פרט/י</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="epilepsy" name="conditions" value="אפילפסיה">
+                    <label for="epilepsy">אפילפסיה</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="asthma" name="conditions" value="אסטמה">
+                    <label for="asthma">אסטמה</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="diabetes" name="conditions" value="סכרת">
+                    <label for="diabetes">סכרת</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="liverDisease" name="conditions" value="מחלת כבד">
+                    <label for="liverDisease">מחלת כבד</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="tuberculosis" name="conditions" value="שחפת">
+                    <label for="tuberculosis">שחפת</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="cancer" name="conditions" value="סרטן">
+                    <label for="cancer">סרטן</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="hepatitis" name="conditions" value="הפטיטיס">
+                    <label for="hepatitis">הפטיטיס</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="hypertension" name="conditions" value="יתר לחץ דם">
+                    <label for="hypertension">יתר לחץ דם</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="heartDisease" name="conditions" value="מחלת לב">
+                    <label for="heartDisease">מחלת לב</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="vascularProblems" name="conditions" value="בעיות בכלי הדם">
+                    <label for="vascularProblems">בעיות בכלי הדם</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="hiv" name="conditions" value="HIV">
+                    <label for="hiv">HIV</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="bleedingTendency" name="conditions" value="נטייה לד
+::contentReference[oaicite:0]{index=0}
+ 
